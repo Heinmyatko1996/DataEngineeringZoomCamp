@@ -12,3 +12,22 @@ services:
     volumes:
       - ./minio_data:/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  duckdb:
+    image: duckdb/duckdb:1.4.3
+    container_name: duckdb
+    depends_on:
+      minio:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./duckdb_data:/data
+      - ./queries:/queries
+    working_dir: /data
+    command: duckdb local.duckdb
