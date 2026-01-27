@@ -23,10 +23,14 @@ The environment is composed of three main layers managed by Terraform:
 - **Terraform**: Version 1.5.0+
 
 ### 1. Provision Infrastructure
-
+Go into terraform/ directory and execute these below commands:
 ```bash
 # Initialize and pull the specific Darwin/ARM64 providers
 terraform init 
+```
+
+```bash
+terraform apply
 ```
 
 ## 2. Execute SQL Queries
