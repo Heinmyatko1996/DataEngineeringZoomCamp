@@ -1,0 +1,16 @@
+# Ignore MinIO internal files
+terraform/minio_data/.minio.sys/
+
+# Ignore DuckDB WAL and temp files
+terraform/duckdb_data/*.wal
+terraform/duckdb_data/*.tmp
+
+# Python/IDE related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.venv/
+.env
+*.lock
